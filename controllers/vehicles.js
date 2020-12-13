@@ -55,13 +55,11 @@ module.exports = {
 		spherical: true,
 		maxDistance: 200,
 		distanceMultiplier: 1,
-		distanceField: "calculated_distance",
-		limit: 1000
+		distanceField: "calculated_distance"
 	    }
 	};
 
-	let aggregate_query = [find_query, {$project: {registration: 1, owner_contact: 1, location: 1}}];
-	console.log(JSON.stringify(aggregate_query));
+	let aggregate_query = [find_query, {$project: {registration: 1, owner_contact: 1, location: 1}}, {$limit: 1000}];
 
 	VehicleModel.aggregate(aggregate_query).exec(function (err, results) {
 	    if(err || !results) {
