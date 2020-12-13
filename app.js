@@ -25,7 +25,7 @@ mongoose.connect(process.env.MONGO_URL, {
   useCreateIndex: true
 }).then(() => console.log("DB Connected"));
 
-app.listen(4001, function() {
+app.listen(process.env.PORT, function() {
     console.log("Server Listening at 4001")
 });
 
